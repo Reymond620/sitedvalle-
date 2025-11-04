@@ -1,6 +1,7 @@
-// script.js — comportamento e interatividade refinado
+JS: 
+// script.js — comportamento e interatividade
 
-// ======== Seletores ========
+// Selectors
 const app = document.getElementById('app');
 const themeToggle = document.getElementById('themeToggle');
 const iconMoon = document.getElementById('iconMoon');
@@ -10,78 +11,81 @@ const emailBtn = document.getElementById('emailBtn');
 const ctaWa = document.getElementById('ctaWa');
 const ctaSolutions = document.getElementById('ctaSolutions');
 const solutionsGrid = document.getElementById('solutionsGrid');
+const contactWa = document.getElementById('contactWa');
+const contactEmail = document.getElementById('contactEmail');
 const footerWa = document.getElementById('footerWa');
 const footerEmail = document.getElementById('footerEmail');
 
-// ======== Links ========
+// Links
 const WA_NUMBER = '5545998181217';
 const MAIL_ADDRESS = 'DValle.comercial@gmail.com';
 
-// ======== Inicialização do tema ========
-function initTheme() {
+// Init theme from localStorage or system
+function initTheme(){
   const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  const isDark = saved === 'dark' || (!saved && prefersDark);
-
-  app.classList.toggle('dark', isDark);
-  app.classList.toggle('light', !isDark);
-  iconMoon.classList.toggle('hidden', isDark);
-  iconSun.classList.toggle('hidden', !isDark);
+  if(saved === 'dark'){
+    app.classList.remove('light');
+    app.classList.add('dark');
+    iconMoon.classList.add('hidden');
+    iconSun.classList.remove('hidden');
+  } else {
+    app.classList.remove('dark');
+    app.classList.add('light');
+    iconMoon.classList.remove('hidden');
+    iconSun.classList.add('hidden');
+  }
 }
-
 initTheme();
 
-// ======== Alternar tema ========
 themeToggle.addEventListener('click', () => {
-  const isDark = app.classList.contains('dark');
-  app.classList.toggle('dark', !isDark);
-  app.classList.toggle('light', isDark);
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  iconMoon.classList.toggle('hidden', !isDark);
-  iconSun.classList.toggle('hidden', isDark);
-
-  // Transição suave
-  app.style.transition = 'background-color 0.4s ease, color 0.4s ease';
-  setTimeout(() => (app.style.transition = ''), 600);
+  if(app.classList.contains('dark')){
+    app.classList.remove('dark'); app.classList.add('light');
+    localStorage.setItem('theme', 'light');
+    iconMoon.classList.remove('hidden');
+    iconSun.classList.add('hidden');
+  } else {
+    app.classList.remove('light'); app.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+    iconMoon.classList.add('hidden');
+    iconSun.classList.remove('hidden');
+  }
 });
 
-// ======== Ações de contato ========
-function openWhatsApp() {
+// Open WhatsApp
+function openWhatsApp(){
   window.open(`https://wa.me/${WA_NUMBER}`, '_blank');
 }
-function openEmail() {
+waBtn.addEventListener('click', openWhatsApp);
+ctaWa.addEventListener('click', openWhatsApp);
+contactWa.addEventListener('click', openWhatsApp);
+footerWa.addEventListener('click', openWhatsApp);
+
+// Open email
+function openEmail(){
   window.location.href = `mailto:${MAIL_ADDRESS}`;
 }
+emailBtn.addEventListener('click', openEmail);
+contactEmail.addEventListener('click', openEmail);
+footerEmail.addEventListener('click', openEmail);
 
-// Botões principais
-if (waBtn) waBtn.addEventListener('click', openWhatsApp);
-if (ctaWa) ctaWa.addEventListener('click', openWhatsApp);
-if (footerWa) footerWa.addEventListener('click', openWhatsApp);
+// Smooth scroll to solutions
+ctaSolutions.addEventListener('click', () => {
+  document.getElementById('solutions').scrollIntoView({behavior:'smooth'});
+});
 
-if (emailBtn) emailBtn.addEventListener('click', openEmail);
-if (footerEmail) footerEmail.addEventListener('click', openEmail);
-
-// ======== Rolagem suave para soluções ========
-if (ctaSolutions) {
-  ctaSolutions.addEventListener('click', () => {
-    document.getElementById('solutions').scrollIntoView({ behavior: 'smooth' });
+// IntersectionObserver for reveal animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
   });
-}
-
-// ======== Animações de revelação ========
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
-    });
-  },
-  { threshold: 0.15 }
-);
+},{threshold: 0.15});
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ======== Efeito de entrada suave ========
+// Small hover "pop" animation for cards (plain CSS handles main hover).
+// Add small stagger entrance when page loads:
 window.addEventListener('load', () => {
   const reveals = document.querySelectorAll('.reveal');
   reveals.forEach((el, i) => {
@@ -89,26 +93,25 @@ window.addEventListener('load', () => {
   });
 });
 
-// ======== Interação de hover nas cards ========
-if (solutionsGrid) {
-  solutionsGrid.addEventListener('mousemove', e => {
-    const cards = solutionsGrid.querySelectorAll('.card');
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `translateY(-6px) rotateX(${ -y * 3 }deg) rotateY(${ x * 3 }deg)`;
-    });
+// Accessibility: keyboard focus style for buttons
+document.querySelectorAll('button, .contact-card, .card').forEach(el => {
+  el.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') el.click();
   });
+});
 
-  solutionsGrid.addEventListener('mouseleave', () => {
-    solutionsGrid.querySelectorAll('.card').forEach(card => (card.style.transform = ''));
+// Optional: tiny tilt on mouse move over solutions grid (for a little flair)
+solutionsGrid.addEventListener('mousemove', (e) => {
+  const cards = solutionsGrid.querySelectorAll('.card');
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `translateY(-6px) rotateX(${ -y * 3 }deg) rotateY(${ x * 3 }deg)`;
   });
-}
-
-// ======== Acessibilidade ========
-document.querySelectorAll('button, a, .card').forEach(el => {
-  el.addEventListener('keydown', e => {
-    if (e.key === 'Enter') el.click();
+});
+solutionsGrid.addEventListener('mouseleave', () => {
+  solutionsGrid.querySelectorAll('.card').forEach(card => {
+    card.style.transform = '';
   });
 });
