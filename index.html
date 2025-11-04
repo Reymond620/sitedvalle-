@@ -1,200 +1,107 @@
- 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DValle — Soluções Integradas</title>
-  <link rel="icon" href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/690627228445d69f02de50e0/a56dff09c_logoDvallepng.png" />
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div id="app" class="light">
-    <!-- NAV -->
-    <nav class="nav">
-      <div class="container nav-inner">
-        <div class="brand">
-          <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/690627228445d69f02de50e0/a56dff09c_logoDvallepng.png"
-               alt="DValle Sistemas" class="logo" />
-        </div>
-        <div class="nav-actions">
-          <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Alternar tema">
-            <!-- moon / sun icons (SVG) -->
-            <svg id="iconMoon" class="icon" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <svg id="iconSun" class="icon hidden" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DValle Assessoria Contábil</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
 
-          <button id="emailBtn" class="ghost-btn">
-            <svg class="icon-small" viewBox="0 0 24 24" fill="none"><path d="M3 8.5l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 6H3v12h18V6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Email
-          </button>
-
-          <button id="waBtn" class="primary-btn">
-            <svg class="icon-small" viewBox="0 0 24 24" fill="none"><path d="M21 12.5A8.5 8.5 0 1012.5 21l-1.2.32.33-1.2A8.5 8.5 0 0021 12.5z" stroke="currentColor" stroke-width="1.5"/><path d="M16.5 15.5c-.5 0-1-.2-1.4-.5-.3-.3-.7-.7-1-1 .-.-" stroke="currentColor" stroke-width="1"/></svg>
-            WhatsApp
-          </button>
-        </div>
+  <body class="light" id="app">
+    <header>
+      <div class="logo">
+        <img src="DValleLogo.png" alt="DValle Logo" />
       </div>
-    </nav>
 
-    <!-- HERO -->
-    <header class="hero">
-      <div class="hero-bg"></div>
-      <div class="container hero-inner">
-        <span class="badge">Soluções Integradas</span>
-        <h1 class="hero-title"><span class="gradient">Soluções Integradas</span> para seu negócio</h1>
-        <p class="hero-sub">Transforme a gestão fiscal da sua empresa com tecnologia de ponta, integração completa e suporte especializado.</p>
-
-        <div class="hero-cta">
-          <button id="ctaWa" class="cta-primary">Fale Conosco <span class="arrow">→</span></button>
-          <button id="ctaSolutions" class="cta-outline">Conheça as Soluções</button>
+      <div class="header-right">
+        <div class="contact-buttons">
+          <button id="waBtn">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </button>
+          <button id="emailBtn">
+            <i class="fa-solid fa-envelope"></i> Email
+          </button>
         </div>
+
+        <button id="themeToggle" aria-label="Alternar tema">
+          <i id="iconMoon" class="fa-solid fa-moon"></i>
+          <i id="iconSun" class="fa-solid fa-sun hidden"></i>
+        </button>
       </div>
     </header>
 
-    <!-- ABOUT -->
-    <section class="section about">
-      <div class="container">
-        <h2>Sobre a <span class="accent">DValle</span></h2>
-        <p>Somos especialistas em soluções fiscais integradas para empresas de todos os portes. Com tecnologia de ponta e expertise no mercado brasileiro, oferecemos softwares que simplificam a emissão de notas fiscais e garantem total conformidade com a legislação vigente.</p>
-      </div>
-    </section>
-
-    <!-- SOLUTIONS -->
-    <section id="solutions" class="section solutions">
-      <div class="container">
-        <h2>Nossas <span class="accent">Soluções</span></h2>
-        <p class="section-sub">Tecnologia completa para gestão fiscal da sua empresa</p>
-
-        <div class="grid cards" id="solutionsGrid">
-          <article class="card reveal">
-            <div class="icon-wrap"><svg class="icon-lg" viewBox="0 0 24 24" fill="none"><path d="M3 7h18" stroke="currentColor" stroke-width="1.5"/><path d="M7 7v12h10V7" stroke="currentColor" stroke-width="1.5"/></svg></div>
-            <h3>Emissão de Notas Fiscais</h3>
-            <p>Emita notas fiscais eletrônicas de forma rápida, simples e totalmente integrada ao seu sistema.</p>
-          </article>
-
-          <article class="card reveal">
-            <div class="icon-wrap"><svg class="icon-lg" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></div>
-            <h3>Controle de Estoque</h3>
-            <p>Gerencie seu estoque de forma eficiente com controle completo de entradas, saídas e inventário.</p>
-          </article>
-
-          <article class="card reveal">
-            <div class="icon-wrap"><svg class="icon-lg" viewBox="0 0 24 24" fill="none"><path d="M12 2v6" stroke="currentColor" stroke-width="1.5"/><path d="M6 12h12" stroke="currentColor" stroke-width="1.5"/></svg></div>
-            <h3>Conformidade Fiscal</h3>
-            <p>Mantenha-se 100% em conformidade com as legislações fiscais brasileiras automaticamente.</p>
-          </article>
-
-          <article class="card reveal">
-            <div class="icon-wrap"><svg class="icon-lg" viewBox="0 0 24 24" fill="none"><path d="M4 12h16" stroke="currentColor" stroke-width="1.5"/><path d="M12 4v16" stroke="currentColor" stroke-width="1.5"/></svg></div>
-            <h3>Integração Rápida</h3>
-            <p>Integre facilmente com seu ERP, sistema de vendas ou plataforma de e-commerce.</p>
-          </article>
+    <main>
+      <section class="intro reveal">
+        <h1>Simplifique sua contabilidade com a DValle</h1>
+        <p>
+          Oferecemos soluções contábeis completas para otimizar sua gestão
+          fiscal e empresarial.
+        </p>
+        <div class="cta">
+          <button id="ctaWa">
+            <i class="fa-brands fa-whatsapp"></i> Fale conosco
+          </button>
+          <button id="ctaSolutions">
+            <i class="fa-solid fa-briefcase"></i> Nossas soluções
+          </button>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- BENEFITS -->
-    <section class="section benefits">
-      <div class="container">
-        <h2>Por que escolher a <span class="accent">DValle</span>?</h2>
+      <section id="solutions" class="solutions reveal">
+        <h2>Nossas Soluções</h2>
 
-        <div class="grid three">
-          <div class="benefit reveal">
-            <div class="benefit-icon">📈</div>
-            <h3>Aumento de Produtividade</h3>
-            <p>Automatize processos e reduza o tempo gasto com emissão de documentos fiscais.</p>
+        <div id="solutionsGrid" class="grid">
+          <div class="card">
+            <i class="fa-solid fa-building"></i>
+            <h3>Contabilidade Empresarial</h3>
+            <p>
+              Gestão completa das obrigações fiscais e contábeis da sua empresa.
+            </p>
           </div>
 
-          <div class="benefit reveal">
-            <div class="benefit-icon">🔒</div>
-            <h3>Segurança Total</h3>
-            <p>Certificação digital e criptografia de ponta para proteger suas informações.</p>
+          <div class="card">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <h3>Declarações Fiscais</h3>
+            <p>Elaboração e envio de declarações obrigatórias sem complicações.</p>
           </div>
 
-          <div class="benefit reveal">
-            <div class="benefit-icon">📊</div>
-            <h3>Relatórios Completos</h3>
-            <p>Análises detalhadas e dashboards para tomada de decisões estratégicas.</p>
+          <div class="card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Consultoria Tributária</h3>
+            <p>Reduza custos e aumente a eficiência tributária com especialistas.</p>
+          </div>
+
+          <div class="card">
+            <i class="fa-solid fa-user-tie"></i>
+            <h3>Gestão de Folha</h3>
+            <p>Administração completa de folha de pagamento e obrigações sociais.</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- FEATURES -->
-    <section class="section features">
-      <div class="container">
-        <h2>Recursos <span class="accent">Inclusos</span></h2>
-
-        <div class="grid features-grid">
-          <div class="feature reveal">Emissão ilimitada de notas fiscais</div>
-          <div class="feature reveal">Armazenamento em nuvem seguro</div>
-          <div class="feature reveal">Integração com principais ERPs</div>
-          <div class="feature reveal">Suporte técnico especializado</div>
-          <div class="feature reveal">Atualizações automáticas</div>
-          <div class="feature reveal">Gestão de múltiplas empresas</div>
-          <div class="feature reveal">Relatórios gerenciais avançados</div>
-          <div class="feature reveal">Certificação digital inclusa</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section contact">
-      <div class="container contact-inner">
+      <section class="cta-final reveal">
         <h2>Pronto para transformar sua gestão fiscal?</h2>
         <p>Entre em contato conosco e descubra como a DValle pode ajudar sua empresa</p>
 
-        <div class="grid two">
-          <div class="contact-card" id="contactWa">
-            <div class="contact-icon">💬</div>
-            <h3>WhatsApp</h3>
-            <p>Fale conosco agora mesmo</p>
-            <p class="contact-phone">+55 (45) 99818-1217</p>
-          </div>
-
-          <div class="contact-card" id="contactEmail">
-            <div class="contact-icon">✉️</div>
-            <h3>Email</h3>
-            <p>Envie sua mensagem</p>
-            <p class="contact-phone">DValle.comercial@gmail.com</p>
-          </div>
+        <div class="cta">
+          <button id="footerWa">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </button>
+          <button id="footerEmail">
+            <i class="fa-solid fa-envelope"></i> Email
+          </button>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div class="footer-left">
-          <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/690627228445d69f02de50e0/a56dff09c_logoDvallepng.png"
-               alt="DValle" class="logo-small" />
-          <p>Soluções fiscais integradas para empresas que buscam eficiência e conformidade.</p>
-        </div>
-
-        <div class="footer-mid">
-          <h4>Soluções</h4>
-          <ul>
-            <li>Emissão de NF-e</li>
-            <li>Sistema em Nuvem</li>
-            <li>Integração ERP</li>
-            <li>Suporte Técnico</li>
-          </ul>
-        </div>
-
-        <div class="footer-right">
-          <h4>Contato</h4>
-          <p class="link" id="footerWa">+55 (45) 99818-1217</p>
-          <p class="link" id="footerEmail">DValle.comercial@gmail.com</p>
-        </div>
-      </div>
-
-      <div class="copyright">
-        © 2025 DValle. Todos os direitos reservados.
-      </div>
+    <footer>
+      <p>© 2025 DValle Assessoria Contábil. Todos os direitos reservados.</p>
     </footer>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
